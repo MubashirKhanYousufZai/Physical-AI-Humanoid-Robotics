@@ -3,11 +3,15 @@ export const runtime = "nodejs";
 import { NextResponse } from "next/server";
 import { Groq } from "groq-sdk";
 
-export async function POST(req: Request) {
-  try {
-    const { prompt } = await req.json();
+interface RequestBody {
+  prompt: string;
+}
 
-    if (!prompt) {
+export async function POST(req: Request): Promise<NextResponse> {
+  try {
+    const body = (await req.json()) as RequestBody;
+
+    if (!body.prompt || !body.prompt.trim()) {
       return NextResponse.json(
         { message: "No prompt received" },
         { status: 400 }
@@ -21,18 +25,22 @@ export async function POST(req: Request) {
     });
 
     const chat = await client.chat.completions.create({
-      messages: [{ role: "user", content: prompt }],
-      model: "llama-3.1-8b-instant", // ✅ NEW SUPPORTED MODEL
+      messages: [{ role: "user", content: body.prompt }],
+      model: "llama-3.1-8b-instant",
       temperature: 0.7,
     });
 
-    const reply = chat.choices?.[0]?.message?.content || "No response";
+    const reply = chat.choices?.[0]?.message?.content ?? "No response";
 
     return NextResponse.json({ message: reply });
-  } catch (error: any) {
-    console.error("BOOK AGENT ERROR:", error);
+  } catch (err) {
+    const errorMessage =
+      err instanceof Error ? err.message : "Unknown error";
+
+    console.error("BOOK AGENT ERROR:", errorMessage);
+
     return NextResponse.json(
-      { message: "Server Error", details: error.message },
+      { message: "Server Error", details: errorMessage },
       { status: 500 }
     );
   }
