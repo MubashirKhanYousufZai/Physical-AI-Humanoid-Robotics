@@ -9,14 +9,25 @@ export async function POST(req: Request) {
   try {
     const body: BodyRequest = await req.json();
 
-    if (!body.prompt) {
+    if (!body.prompt?.trim()) {
       return NextResponse.json({ error: "Prompt is required" }, { status: 400 });
     }
 
-    console.log("GROQ_API_KEY Loaded:", !!process.env.GROQ_API_KEY);
+    const apiKey = process.env.GROQ_API_KEY;
+
+    // YE SABSE ZAROORI CHANGE HAI
+    if (!apiKey) {
+      console.error("GROQ_API_KEY is missing in environment variables!");
+      return NextResponse.json(
+        { error: "Server configuration error" },
+        { status: 500 }
+      );
+    }
+
+    console.log("GROQ_API_KEY Loaded: Yes"); // success log
 
     const groq = new Groq({
-      apiKey: process.env.GROQ_API_KEY ?? "",
+      apiKey, // direct pass karo, kabhi "" mat do
     });
 
     const completion = await groq.chat.completions.create({
@@ -28,16 +39,17 @@ export async function POST(req: Request) {
         },
       ],
       temperature: 0.7,
+      max_tokens: 1024,
     });
 
-    return NextResponse.json({
-      result: completion.choices[0].message.content,
-    });
-  } catch (error) {
-    console.error("Book Agent Error:", error);
+    const reply = completion.choices[0]?.message?.content || "No response from AI";
+
+    return NextResponse.json({ result: reply });
+  } catch (error: any) {
+    console.error("Book Agent Error:", error.message || error);
     return NextResponse.json(
-      { error: "Server Error — Check your API key or request body" },
-      { status: 500 },
+      { error: "Agent is taking a nap. Try again in a few seconds!" },
+      { status: 500 }
     );
   }
 }
