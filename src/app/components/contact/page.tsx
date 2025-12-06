@@ -15,7 +15,6 @@ export default function ContactSection() {
   return (
     <section className="body-font bg-gray-50 py-20">
       <div className="container mx-auto px-5 flex sm:flex-nowrap flex-wrap gap-10">
-
         {/* Map Section */}
         <div className="lg:w-2/3 md:w-1/2 relative rounded-xl overflow-hidden shadow-lg">
           <iframe
@@ -29,9 +28,7 @@ export default function ContactSection() {
 
           <div className="relative bg-white p-6 rounded-lg shadow-md m-6 max-w-xs">
             <h2 className="text-gray-700 text-sm font-semibold tracking-widest">ADDRESS</h2>
-            <p className="mt-2 text-gray-600">
-              Governor House Karachi, Aiwan-e-Sadar, Civil Lines
-            </p>
+            <p className="mt-2 text-gray-600">Governor House Karachi, Aiwan-e-Sadar, Civil Lines</p>
 
             <h2 className="text-gray-700 text-sm font-semibold tracking-widest mt-4">EMAIL</h2>
             <p className="text-indigo-600">mubashirmpa2008@gmail.com</p>

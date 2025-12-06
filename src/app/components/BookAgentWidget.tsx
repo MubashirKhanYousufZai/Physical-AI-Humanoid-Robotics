@@ -96,11 +96,7 @@ export default function BookAgentWidget() {
                 onChange={(e) => setPrompt(e.target.value)}
               />
 
-              <Button
-                onClick={handleAsk}
-                disabled={loading}
-                className="w-full"
-              >
+              <Button onClick={handleAsk} disabled={loading} className="w-full">
                 {loading ? "Thinking..." : "Ask Agent"}
               </Button>
 

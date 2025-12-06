@@ -1,47 +1,43 @@
-export const runtime = "nodejs";
-
 import { NextResponse } from "next/server";
 import { Groq } from "groq-sdk";
 
-interface RequestBody {
+interface BodyRequest {
   prompt: string;
 }
 
-export async function POST(req: Request): Promise<NextResponse> {
+export async function POST(req: Request) {
   try {
-    const body = (await req.json()) as RequestBody;
+    const body: BodyRequest = await req.json();
 
-    if (!body.prompt || !body.prompt.trim()) {
-      return NextResponse.json(
-        { message: "No prompt received" },
-        { status: 400 }
-      );
+    if (!body.prompt) {
+      return NextResponse.json({ error: "Prompt is required" }, { status: 400 });
     }
 
-    console.log("Loaded API Key:", process.env.GROQ_API_KEY);
+    console.log("GROQ_API_KEY Loaded:", !!process.env.GROQ_API_KEY);
 
-    const client = new Groq({
-      apiKey: process.env.GROQ_API_KEY,
+    const groq = new Groq({
+      apiKey: process.env.GROQ_API_KEY ?? "",
     });
 
-    const chat = await client.chat.completions.create({
-      messages: [{ role: "user", content: body.prompt }],
-      model: "llama-3.1-8b-instant",
+    const completion = await groq.chat.completions.create({
+      model: "llama3-70b-8192",
+      messages: [
+        {
+          role: "user",
+          content: body.prompt,
+        },
+      ],
       temperature: 0.7,
     });
 
-    const reply = chat.choices?.[0]?.message?.content ?? "No response";
-
-    return NextResponse.json({ message: reply });
-  } catch (err) {
-    const errorMessage =
-      err instanceof Error ? err.message : "Unknown error";
-
-    console.error("BOOK AGENT ERROR:", errorMessage);
-
+    return NextResponse.json({
+      result: completion.choices[0].message.content,
+    });
+  } catch (error) {
+    console.error("Book Agent Error:", error);
     return NextResponse.json(
-      { message: "Server Error", details: errorMessage },
-      { status: 500 }
+      { error: "Server Error — Check your API key or request body" },
+      { status: 500 },
     );
   }
 }

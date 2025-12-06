@@ -8,7 +8,7 @@ export default function CardsSection() {
       subtitle: "Chapter 1",
       description: "This chapter covers the basics of AI, Robotics, and humanoid design.",
       img: "/ch1.png",
-      link: "/components/chapters/ch1", 
+      link: "/components/chapters/ch1",
     },
     {
       id: 2,
@@ -30,7 +30,8 @@ export default function CardsSection() {
       id: 4,
       title: "Human-Robot Interaction (HRI)",
       subtitle: "Chapter 4",
-      description: "This chapter covers how humanoids communicate and interact socially with humans.",
+      description:
+        "This chapter covers how humanoids communicate and interact socially with humans.",
       img: "/ch4.png",
       link: "/components/chapters/ch4",
     },
@@ -54,7 +55,8 @@ export default function CardsSection() {
       id: 7,
       title: "Safety, Trust, and Regulation",
       subtitle: "Chapter 7",
-      description: "This chapter covers safety, ethics, and societal impacts of humanoid robots and AI.",
+      description:
+        "This chapter covers safety, ethics, and societal impacts of humanoid robots and AI.",
       img: "/ch7.png",
       link: "/components/chapters/ch7",
     },
@@ -62,7 +64,8 @@ export default function CardsSection() {
       id: 8,
       title: "The Road Ahead",
       subtitle: "Chapter 8",
-      description: "This chapter explores the future of AI and humanoids, including AGI and collaborative robots.",
+      description:
+        "This chapter explores the future of AI and humanoids, including AGI and collaborative robots.",
       img: "/ch8.png",
       link: "/components/chapters/ch8",
     },
@@ -80,7 +83,8 @@ export default function CardsSection() {
             <div className="h-1 w-24 bg-gradient-to-r from-indigo-500 to-purple-500 rounded"></div>
           </div>
           <p className="lg:w-1/2 w-full leading-relaxed text-gray-500">
-            Explore chapters covering the fusion of Artificial Intelligence and Humanoid Robotics, from fundamentals to future insights.
+            Explore chapters covering the fusion of Artificial Intelligence and Humanoid Robotics,
+            from fundamentals to future insights.
           </p>
         </div>
 
@@ -90,7 +94,6 @@ export default function CardsSection() {
             <div key={chapter.id} className="xl:w-1/4 md:w-1/2 p-4">
               <a href={chapter.link} className="block h-full">
                 <div className="bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-2xl cursor-pointer h-full flex flex-col">
-                  
                   {/* Image with overlay */}
                   <div className="relative h-48 w-full flex-shrink-0">
                     <Image
@@ -109,13 +112,10 @@ export default function CardsSection() {
                       <h3 className="text-xs text-indigo-600 font-semibold tracking-widest mb-1">
                         {chapter.subtitle}
                       </h3>
-                      <h2 className="text-lg font-bold text-gray-900 mb-3">
-                        {chapter.title}
-                      </h2>
+                      <h2 className="text-lg font-bold text-gray-900 mb-3">{chapter.title}</h2>
                       <p className="text-gray-600 leading-relaxed">{chapter.description}</p>
                     </div>
                   </div>
-
                 </div>
               </a>
             </div>
