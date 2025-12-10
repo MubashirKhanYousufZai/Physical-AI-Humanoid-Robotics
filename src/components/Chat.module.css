@@ -1,0 +1,107 @@
+/* src/components/Chat.module.css */
+
+/* --- Main Container --- */
+.chatContainer {
+  display: flex;
+  flex-direction: column;
+  height: 65vh; /* Increased height for a better feel */
+  max-height: 800px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: var(--ifm-background-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Messages Area --- */
+.messages {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  /* Styling the scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--ifm-color-emphasis-400) var(--ifm-background-color);
+}
+
+.messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+.messages::-webkit-scrollbar-thumb {
+  background-color: var(--ifm-color-emphasis-400);
+  border-radius: 10px;
+}
+
+/* --- Individual Message Bubble --- */
+.message {
+  padding: 12px 16px;
+  border-radius: 18px;
+  max-width: 85%;
+  word-wrap: break-word;
+  font-size: 1rem;
+  line-height: 1.5;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* --- User's Message Style (Right-aligned, Primary color) --- */
+.user {
+  align-self: flex-end;
+  background-color: var(--ifm-color-primary);
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+/* --- Bot's Message Style (Left-aligned, Light background) --- */
+.bot {
+  align-self: flex-start;
+  background-color: var(--ifm-color-emphasis-200);
+  color: var(--ifm-font-color-base);
+  border-bottom-left-radius: 4px;
+}
+
+/* --- Input Area --- */
+.inputArea {
+  display: flex;
+  padding: 15px 20px;
+  border-top: 1px solid var(--ifm-color-emphasis-300);
+  background-color: var(--ifm-background-color);
+  gap: 10px;
+}
+
+.inputArea input {
+  flex-grow: 1;
+  padding: 12px 15px;
+  border: 1px solid var(--ifm-color-emphasis-400);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.inputArea input:focus {
+  border-color: var(--ifm-color-primary);
+  outline: none;
+}
+
+.inputArea button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--ifm-color-primary);
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.inputArea button:hover:not(:disabled) {
+  background-color: var(--ifm-color-primary-dark);
+}
+
+.inputArea button:disabled {
+  background-color: var(--ifm-color-emphasis-500);
+  cursor: not-allowed;
+}

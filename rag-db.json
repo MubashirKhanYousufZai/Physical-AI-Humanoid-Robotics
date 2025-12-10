@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "source": "Chapter 1: Introduction to Humanoids, Page 5",
+    "content": "Humanoid robotics is an interdisciplinary field dedicated to creating robots that resemble the human body and are capable of performing human-like tasks. These tasks include walking on two legs, manipulating objects with articulated hands, and interacting socially. Early examples, like Leonardo da Vinci's mechanical knight, paved the way for modern designs focused on achieving human gait."
+  },
+  {
+    "id": 2,
+    "source": "Chapter 2: Bipedal Locomotion, Section 2.1",
+    "content": "Bipedal locomotion presents a unique challenge due to the 'Zero Moment Point' (ZMP) stability criterion. The ZMP must remain within the boundary of the feet in contact with the ground to prevent the robot from tipping over. Advanced control systems utilize predictive modeling to ensure the robot's center of mass is constantly managed relative to the ZMP during walking."
+  },
+  {
+    "id": 3,
+    "source": "Chapter 3: AI and Perception, Page 45",
+    "content": "AI-powered perception in humanoid robots primarily relies on deep learning models trained on vast datasets. Computer vision, using RGB-D cameras, allows the robot to recognize objects and estimate their distance and pose. This visual data is crucial for navigation and fine-motor control, enabling complex tasks like pouring water or opening doors."
+  },
+  {
+    "id": 4,
+    "source": "Conclusion: The Future of Physical AI",
+    "content": "The ethical and societal implications of widely deployed humanoid robots are a major focus for future research. Key areas include ensuring robot safety, addressing job displacement concerns, and developing transparent AI systems. The transition from controlled lab environments to dynamic real-world settings remains the biggest engineering hurdle."
+  }
+]

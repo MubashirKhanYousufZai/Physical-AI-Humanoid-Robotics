@@ -1,135 +1,152 @@
-// @ts-check
-import {themes as prismThemes} from 'prism-react-renderer';
+// @ts-check 
+const path = require('path');
+const prismThemes = require("prism-react-renderer").themes; // FIX: Changed import to require
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Physical AI & Humanoid Robotics',
-  tagline: 'Explore AI-powered humanoid robots',
-  favicon: 'img/favicon.ico',
+  title: "Physical AI & Humanoid Robotics",
+  tagline: "Explore AI-powered humanoid robots",
+  favicon: "img/favicon.ico",
 
   future: {
     v4: true,
   },
 
-  url: 'https://ai-robotics-reads.vercel.app', // your live site
-  baseUrl: '/',
+  url: "https://physical-ai-humanoid-robotics-mu.vercel.app/",
+  baseUrl: "/",
 
-  organizationName: 'MubashirKhanYousufZai', // GitHub username
-  projectName: 'AI-Robotics-Reads',
+  organizationName: "MubashirKhanYousufZai",
+  projectName: "Physical AI & Humanoid Robotics",
 
-  onBrokenLinks: 'throw',
-  // ------------------------------------------------------------------
-  // ⚠️ FIX: REMOVED DEPRECATED OPTION HERE (onBrokenMarkdownLinks)
-  // ------------------------------------------------------------------
+  onBrokenLinks: "throw",
 
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: "en",
+    locales: ["en"],
   },
 
-  // ------------------------------------------------------------------
-  // ✨ FIX: ADDED NEW MARKDOWN HOOKS STRUCTURE HERE
-  // ------------------------------------------------------------------
   markdown: {
     hooks: {
-      onBrokenMarkdownLinks: 'warn', // Moved here to fix the build warning
+      onBrokenMarkdownLinks: "warn",
     },
   },
-  // ------------------------------------------------------------------
+
+ // =======================================================================
+ // 🚀 FIX: Using require.resolve for robust plugin pathing
+ // =======================================================================
+  plugins: [
+    require.resolve('./plugins/resolve-fallback'),
+  ],
+ // =======================================================================
 
   presets: [
     [
-      'classic',
+      "classic",
       {
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/MubashirKhanYousufZai/AI-Robotics-Reads/edit/main/',
+          sidebarPath: require.resolve("./sidebars.js"),
+          editUrl:
+            "https://github.com/MubashirKhanYousufZai/Physical-AI-Humanoid-Robotics/edit/main/",
         },
-        blog: false, // blog removed for Hackathon clean look
+        blog: false,
+        
+        // 🛑 CRITICAL FIX: Tell Docusaurus to ignore the API folder
+        pages: {
+          exclude: [
+            '**/api/**', 
+          ],
+        },
+        
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve("./src/css/custom.css"),
         },
       },
     ],
   ],
 
   themeConfig: {
-    image: 'img/docusaurus-social-card.jpg',
+    image: "img/docusaurus-social-card.jpg",
     colorMode: {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'AI & Humanoid Robotics',
+      title: "AI & Humanoid Robotics",
       logo: {
-        alt: 'AI Robotics Logo',
-        src: 'img/logo.svg',
+        alt: "AI Robotics Logo",
+        src: "img/logo.svg",
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: 'Tutorial',
+          type: "docSidebar",
+          sidebarId: "tutorialSidebar",
+          position: "left",
+          label: "Tutorial",
         },
         {
-          href: 'https://github.com/MubashirKhanYousufZai/AI-Robotics-Reads',
-          label: 'GitHub',
-          position: 'right',
+          type: "doc",
+          docId: "rag-chatbot", 
+          label: "RAG Chatbot",
+          position: "left",
+        },
+        {
+          href: "https://github.com/MubashirKhanYousufZai/Physical-AI-Humanoid-Robotics",
+          label: "GitHub",
+          position: "right",
         },
       ],
     },
     footer: {
-      style: 'dark',
+      style: "dark",
       links: [
         {
-          title: 'Docs',
+          title: "Docs",
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs/intro',
+              label: "Tutorial",
+              to: "/docs/intro",
             },
             {
-              label: 'Author',
-              to: '/docs/author',
+              label: "Author",
+              to: "/docs/author",
             },
           ],
         },
         {
-          title: 'Community',
+          title: "Community",
           items: [
             {
-              label: 'LinkedIn',
-              href: 'https://www.linkedin.com/in/mubashir-khan-538a662bb',
+              label: "LinkedIn",
+              href: "https://www.linkedin.com/in/mubashir-khan-538a662bb",
             },
             {
-              label: 'Email',
-              href: 'mailto:mubashirmpa2008@gmail.com',
+              label: "Email",
+              href: "mailto:mubashirmpa2008@gmail.com",
             },
             {
-              label: 'X',
-              href: 'https://x.com/MubashirKh67451',
+              label: "X",
+              href: "https://x.com/MubashirKh67451",
             },
           ],
         },
         {
-          title: 'More',
+          title: "More",
           items: [
             {
-              label: 'Portfolio',
-              href: 'https://mubashir-khans-portfolio.vercel.app/',
+              label: "Portfolio",
+              href: "https://mubashir-khans-portfolio.vercel.app/",
             },
             {
-              label: 'GitHub',
-              href: 'https://github.com/MubashirKhanYousufZai/AI-Robotics-Reads',
+              label: "GitHub",
+              href: "https://github.com/MubashirKhanYousufZai/Physical-AI-Humanoid-Robotics",
             },
           ],
         },
       ],
       copyright: `
-        © ${new Date().getFullYear()} Mubashir Khan. 
-        Built with ❤️ using Docusaurus. 
-        All rights reserved.
-      `,
+            © ${new Date().getFullYear()} Mubashir Khan. 
+            Built with ❤️ using Docusaurus. 
+            All rights reserved.
+            `,
     },
     prism: {
       theme: prismThemes.github,
