@@ -36,6 +36,7 @@ const config = {
  // =======================================================================
   plugins: [
     require.resolve('./plugins/resolve-fallback'),
+    require.resolve('./plugins/api'),
   ],
  // =======================================================================
 
@@ -89,7 +90,7 @@ const config = {
           position: "left",
         },
         {
-          href: "https://github.com/MubashirKhanYousufZai/Physical-AI-Humanoid-Robotics",
+          href: "https://github.com/MubashirKhanYousufZai/",
           label: "GitHub",
           position: "right",
         },
@@ -137,7 +138,7 @@ const config = {
             },
             {
               label: "GitHub",
-              href: "https://github.com/MubashirKhanYousufZai/Physical-AI-Humanoid-Robotics",
+              href: "https://github.com/MubashirKhanYousufZai/",
             },
           ],
         },
