@@ -20,6 +20,8 @@
     "buffer": "^6.0.3",
     "clsx": "^2.0.0",
     "crypto-browserify": "^3.12.1",
+    "dotenv": "^17.2.3",
+    "groq-sdk": "^0.8.0",
     "os-browserify": "^0.3.0",
     "path-browserify": "^1.0.1",
     "prism-react-renderer": "^2.3.0",
@@ -28,8 +30,7 @@
     "stream-browserify": "^3.0.0",
     "url": "^0.11.4",
     "util": "^0.12.5",
-    "vm-browserify": "^1.1.2",
-    "groq-sdk": "^0.8.0"
+    "vm-browserify": "^1.1.2"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.9.2",
