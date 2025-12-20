@@ -35,8 +35,7 @@ const config = {
  // 🚀 FIX: Using require.resolve for robust plugin pathing
  // =======================================================================
   plugins: [
-    require.resolve('./plugins/resolve-fallback'),
-    require.resolve('./plugins/api'),
+    require.resolve('./plugins/custom-plugin'),
   ],
  // =======================================================================
 
